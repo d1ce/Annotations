@@ -34,7 +34,7 @@ class ExtensionTest extends Tester\TestCase
 	{
 		$config = new Nette\Configurator();
 		$config->setTempDirectory(TEMP_DIR);
-		$config->addParameters(['container' => ['class' => 'SystemContainer_' . md5($configFile)]]);
+		$config->addParameters(array('container' => array('class' => 'SystemContainer_' . md5($configFile))));
 		$config->addConfig(__DIR__ . '/../nette-reset.neon');
 		$config->addConfig(__DIR__ . '/config/' . $configFile . '.neon');
 		Kdyby\Annotations\DI\AnnotationsExtension::register($config);
@@ -53,9 +53,9 @@ class ExtensionTest extends Tester\TestCase
 
 		require_once __DIR__ . '/files/ignored.php';
 		$annotations = $reader->getPropertyAnnotations(new \ReflectionProperty('KdybyTests\Annotations\Dj', 'music'));
-		Assert::equal([
-			new \KdybyTests\Annotations\HandsInTheAir([])
-		], $annotations);
+		Assert::equal(array(
+			new \KdybyTests\Annotations\HandsInTheAir(array())
+		), $annotations);
 	}
 
 }
